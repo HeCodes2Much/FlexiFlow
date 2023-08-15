@@ -16,7 +16,7 @@ static const int smartgaps                      = 0;        /* 1 means no outer 
 static const unsigned int systraypinning        = 2;        /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing        = 4;        /* systray spacing */
 static const int systraypinningfailfirst        = 1;        /* 1: if pinning fails,display systray on the 1st monitor,False: display systray on last monitor*/
-static int showsystray                          = 1;        /* 0 means no systray */
+static int showsystray                          = 0;        /* 0 means no systray */
 static const int showbar                        = 1;        /* 0 means no bar */
 static const int usedbar                        = 1;        /* 0 means don't use repobar script */
 static const int showtab                        = showtab_auto;
@@ -27,9 +27,6 @@ static const int vertpadbar                     = 11;
 static const int vertpadtab                     = 33;
 static const int horizpadtabi                   = 15;
 static const int horizpadtabo                   = 15;
-static const int scalepreview                   = 4;
-static const int tagpreview                     = 0;        /* 1 means enable, 0 is off */
-static const int showbarpreview                 = 0;        /* 1 means enable (tagpreview must also be enabled for this to work), 0 is off */
 static const int colorfultag                    = 1;        /* 0 means use SchemeSel for selected non vacant tag */
 
 static const char *fonts[] = {
@@ -65,7 +62,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-    "autorandr", "--force", "--load", "repowm", NULL,
+    "autorandr", "--force", "--load", "flexiflow", NULL,
     "setxkbmap", "-option", "caps:escape", NULL,
     "youtube_subs", "-d", NULL,
     "xroot", "-r", "xmenu_desktop", NULL,
@@ -212,10 +209,10 @@ static const Taglayout taglayouts[] = {
 { MODKEY|ShiftMask,             CHAIN,        KEY,      tag,            {.ui = 1 << TAG} }, \
 { MODKEY|ControlMask|ShiftMask, CHAIN,        KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre repowm-5.0 fashion */
+/* helper for spawning shell commands in the pre flexiflow-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL} }
 
-/* repowm commands */
+/* flexiflow commands */
 static char repomenumon[2] = "0"; /* component of startmenucmd, manipulated in spawn() */
 static const char *layoutmenucmd = "layoutmenu";
 static const char *startmenucmd[] = { "menu", NULL};

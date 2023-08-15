@@ -6,7 +6,7 @@
  * events about window (dis-)appearance. Only one X connection at a time is
  * allowed to select for this event mask.
  *
- * The event handlers of repowm are organized in an array which is accessed
+ * The event handlers of flexiflow are organized in an array which is accessed
  * whenever a new event has been fetched. This allows event dispatching
  * in O(1) time.
  *
@@ -41,7 +41,6 @@
 #include <X11/extensions/Xinerama.h>
 #endif /* XINERAMA */
 #include <X11/Xft/Xft.h>
-#include <Imlib2.h>
 #include "drw.h"
 #include "util.h"
 
@@ -360,7 +359,6 @@ static void setviewport(void);
 static void seturgent(Client *c, int urg);
 static void show(Client *c);
 static void showhide(Client *c);
-static void showtagpreview(int tag);
 static void sigchld(int unused);
 static void sighup(int unused);
 static void sigterm(int unused);
@@ -512,7 +510,7 @@ struct NumTags
     char limitexceeded[LENGTH(tags) > 31 ? -1 : 1];
 };
 
-/* repowm will keep pid's of processes from autostart array and kill them at quit */
+/* flexiflow will keep pid's of processes from autostart array and kill them at quit */
 static pid_t *autostart_pids;
 static size_t autostart_len;
 
@@ -535,7 +533,7 @@ autostart_exec()
         {
             setsid();
             execvp(*p, (char *const *)p);
-            fprintf(stderr, "repowm: execvp %s\n", *p);
+            fprintf(stderr, "flexiflow: execvp %s\n", *p);
             perror(" failed");
             _exit(EXIT_FAILURE);
         }
@@ -705,7 +703,7 @@ void arrangemon(Monitor *m)
     updatebarpos(m);
     updatesystray();
     XMoveResizeWindow(dpy, m->tabwin, m->wx + m->gappov, m->ty, m->ww - 2 * m->gappov, th);
-    XMoveWindow(dpy, m->tagwin, m->wx + m->gappov, m->by + (m->topbar ? (bh + m->gappoh) : (-(m->mh / scalepreview) - m->gappoh)));
+    XMoveWindow(dpy, m->tagwin, m->wx + m->gappov, m->by + (m->topbar ? (bh + m->gappoh) : (-(m->mh) - m->gappoh)));
     strncpy(m->ltsymbol, m->lt[m->sellt]->symbol, sizeof m->ltsymbol);
     if (m->lt[m->sellt]->arrange)
         m->lt[m->sellt]->arrange(m);
@@ -1023,7 +1021,7 @@ void clientmessage(XEvent *e)
             updatesystrayicongeom(c, wa.width, wa.height);
             XAddToSaveSet(dpy, c->win);
             XSelectInput(dpy, c->win, StructureNotifyMask | PropertyChangeMask | ResizeRedirectMask);
-            XClassHint ch = {"repowmsystray", "repowmsystray"};
+            XClassHint ch = {"flexiflowsystray", "flexiflowsystray"};
             XSetClassHint(dpy, c->win, &ch);
             XReparentWindow(dpy, c->win, systray->win, 0, 0);
             /* use parents background color */
@@ -2505,41 +2503,10 @@ void monocle(Monitor *m)
 
 void motionnotify(XEvent *e)
 {
-    unsigned int i, x;
     static Monitor *mon = NULL;
     Monitor *m;
     XMotionEvent *ev = &e->xmotion;
 
-    if (ev->window == selmon->barwin)
-    {
-        i = x = 0;
-        do
-            x += TEXTW(tags[i]);
-        while (ev->x >= x && ++i < LENGTH(tags));
-        if (i < LENGTH(tags))
-        {
-            if ((i + 1) != selmon->previewshow && !(selmon->tagset[selmon->seltags] & 1 << i))
-            {
-                selmon->previewshow = i + 1;
-                showtagpreview(i);
-            }
-            else if (selmon->tagset[selmon->seltags] & 1 << i)
-            {
-                selmon->previewshow = 0;
-                showtagpreview(0);
-            }
-        }
-        else if (selmon->previewshow != 0)
-        {
-            selmon->previewshow = 0;
-            showtagpreview(0);
-        }
-    }
-    else if (selmon->previewshow != 0)
-    {
-        selmon->previewshow = 0;
-        showtagpreview(0);
-    }
 
     if (ev->window != root)
         return;
@@ -3075,13 +3042,13 @@ void runAutostart(void)
         }
     }
     /* For Information Fetchers */
-    setenv("XDG_CURRENT_DESKTOP", "repowm", 1);
-    setenv("XDG_SESSION_DESKTOP", "repowm", 1);
-    setenv("DESKTOP_SESSION", "repowm", 1);
+    setenv("XDG_CURRENT_DESKTOP", "flexiflow", 1);
+    setenv("XDG_SESSION_DESKTOP", "flexiflow", 1);
+    setenv("DESKTOP_SESSION", "flexiflow", 1);
 
     int ret;
 
-    ret = system("~/.config/repowm/autostart.sh &");
+    ret = system("~/.config/flexiflow/autostart.sh &");
 
     if (ret); // ignore, hide compilation warnings
 }
@@ -3430,7 +3397,7 @@ void setup(void)
     XChangeProperty(dpy, wmcheckwin, netatom[NetWMCheck], XA_WINDOW, 32,
                     PropModeReplace, (unsigned char *)&wmcheckwin, 1);
     XChangeProperty(dpy, wmcheckwin, netatom[NetWMName], utf8string, 8,
-                    PropModeReplace, (unsigned char *)"repowm", 3);
+                    PropModeReplace, (unsigned char *)"flexiflow", 3);
     XChangeProperty(dpy, root, netatom[NetWMCheck], XA_WINDOW, 32,
                     PropModeReplace, (unsigned char *)&wmcheckwin, 1);
     /* EWMH support per view */
@@ -3501,26 +3468,6 @@ void showhide(Client *c)
     }
 }
 
-void showtagpreview(int tag)
-{
-    if (!selmon->previewshow || !tagpreview)
-    {
-        XUnmapWindow(dpy, selmon->tagwin);
-        return;
-    }
-
-    if (selmon->tagmap[tag])
-    {
-        XSetWindowBackgroundPixmap(dpy, selmon->tagwin, selmon->tagmap[tag]);
-        XCopyArea(dpy, selmon->tagmap[tag], selmon->tagwin, drw->gc, 0, 0, selmon->mw / scalepreview, selmon->mh / scalepreview, 0, 0);
-        XSync(dpy, False);
-        XMapWindow(dpy, selmon->tagwin);
-    }
-    else {
-        XUnmapWindow(dpy, selmon->tagwin);
-    }
-}
-
 void sigchld(int unused)
 {
     if (signal(SIGCHLD, sigchld) == SIG_ERR)
@@ -3552,7 +3499,7 @@ void spawn(const Arg *arg)
             close(ConnectionNumber(dpy));
         setsid();
         execvp(((char **)arg->v)[0], (char **)arg->v);
-        fprintf(stderr, "repowm: execvp %s", ((char **)arg->v)[0]);
+        fprintf(stderr, "flexiflow: execvp %s", ((char **)arg->v)[0]);
         perror(" failed");
         exit(EXIT_SUCCESS);
     }
@@ -3570,7 +3517,6 @@ void switchtag(void)
     int i;
     unsigned int occ = 0;
     Client *c;
-    Imlib_Image image;
 
     for (c = selmon->clients; c; c = c->next)
         occ |= c->tags;
@@ -3583,22 +3529,6 @@ void switchtag(void)
                 XFreePixmap(dpy, selmon->tagmap[i]);
                 selmon->tagmap[i] = 0;
             }
-            if (occ & 1 << i && tagpreview) {
-				image = imlib_create_image(sw, sh);
-				imlib_context_set_image(image);
-				imlib_context_set_display(dpy);
-				imlib_context_set_visual(DefaultVisual(dpy, screen));
-				imlib_context_set_drawable(RootWindow(dpy, screen));
-                if (showbarpreview) {
-                    imlib_copy_drawable_to_image(0, selmon->mx, selmon->my, selmon->mw, selmon->mh, 0, 0, 1);
-                } else {
-                    imlib_copy_drawable_to_image(0, selmon->wx, selmon->wy, selmon->ww, selmon->wh, 0, 0, 1);
-                }
-				selmon->tagmap[i] = XCreatePixmap(dpy, selmon->tagwin, selmon->mw / scalepreview, selmon->mh / scalepreview, DefaultDepth(dpy, screen));
-				imlib_context_set_drawable(selmon->tagmap[i]);
-				imlib_render_image_part_on_drawable_at_size(0, 0, selmon->mw, selmon->mh, 0, 0, selmon->mw / scalepreview, selmon->mh / scalepreview);
-				imlib_free_image();
-			}
         }
     }
 }
@@ -3620,7 +3550,7 @@ void spawnscratch(const Arg *arg)
             close(ConnectionNumber(dpy));
         setsid();
         execvp(((char **)arg->v)[1], ((char **)arg->v) + 1);
-        fprintf(stderr, "repowm: execvp %s", ((char **)arg->v)[1]);
+        fprintf(stderr, "flexiflow: execvp %s", ((char **)arg->v)[1]);
         perror(" failed");
         exit(EXIT_SUCCESS);
     }
@@ -3885,7 +3815,7 @@ void updatebars(void)
                                .background_pixmap = ParentRelative,
                                .event_mask = ButtonPressMask | ExposureMask | PointerMotionMask};
 
-    XClassHint ch = {"repowm", "repowm"};
+    XClassHint ch = {"flexiflow", "flexiflow"};
     for (m = mons; m; m = m->next)
     {
         if (m->barwin)
@@ -4174,7 +4104,7 @@ void updatestatus(void)
 {
     Monitor *m;
     if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-        strcpy(stext, "repowm-" VERSION);
+        strcpy(stext, "flexiflow-" VERSION);
     for (m = mons; m; m = m->next)
         drawbar(m);
     if (showsystray)
@@ -4273,7 +4203,7 @@ void updatesystray(void)
         }
         else
         {
-            fprintf(stderr, "repowm: unable to obtain system tray.\n");
+            fprintf(stderr, "flexiflow: unable to obtain system tray.\n");
             free(systray);
             systray = NULL;
             return;
@@ -4456,7 +4386,7 @@ int xerror(Display *dpy, XErrorEvent *ee)
         (ee->request_code == X_GrabKey && ee->error_code == BadAccess) ||
         (ee->request_code == X_CopyArea && ee->error_code == BadDrawable))
         return 0;
-    fprintf(stderr, "repowm: fatal error: request code=%d, error code=%d\n",
+    fprintf(stderr, "flexiflow: fatal error: request code=%d, error code=%d\n",
             ee->request_code, ee->error_code);
     return xerrorxlib(dpy, ee); /* may call exit */
 }
@@ -4467,7 +4397,7 @@ int xerrordummy(Display *dpy, XErrorEvent *ee) { return 0; }
  * is already running. */
 int xerrorstart(Display *dpy, XErrorEvent *ee)
 {
-    die("repowm: another window manager is already running");
+    die("flexiflow: another window manager is already running");
     return -1;
 }
 
@@ -4506,13 +4436,13 @@ void zoom(const Arg *arg)
 int main(int argc, char *argv[])
 {
     if (argc == 2 && !strcmp("-v", argv[1]))
-        die("repowm-" VERSION);
+        die("flexiflow-" VERSION);
     else if (argc != 1 && strcmp("-s", argv[1]))
-        die("usage: repowm [-v]");
+        die("usage: flexiflow [-v]");
     if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
         fputs("warning: no locale support\n", stderr);
     if (!(dpy = XOpenDisplay(NULL)))
-        die("repowm: cannot open display");
+        die("flexiflow: cannot open display");
     if (argc > 1 && !strcmp("-s", argv[1]))
     {
         XStoreName(dpy, RootWindow(dpy, DefaultScreen(dpy)), argv[2]);

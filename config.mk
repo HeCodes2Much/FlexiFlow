@@ -1,4 +1,4 @@
-# repowm version
+# flexiflow version
 VERSION = 2023.08.06
 
 # Customize below to fit your system

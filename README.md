@@ -1,24 +1,24 @@
 <div align="center">
-    <h1>repowm</h1>
+    <h1>FlexiFlow</h1>
     <p>Window manager for linux</p>
 </div>
 
 # Initial look
 
-<img src="https://github.com/The-Repo-Club/repowm/blob/screenshots/screenshots/initial_look.png">
-<img src="https://github.com/The-Repo-Club/repowm/blob/screenshots/screenshots/col_layout.png">
+<img src="https://github.com/The-Repo-Club/FlexiFlow/blob/screenshots/screenshots/initial_look.png">
+<img src="https://github.com/The-Repo-Club/FlexiFlow/blob/screenshots/screenshots/col_layout.png">
 
-<img src="https://github.com/The-Repo-Club/repowm/blob/screenshots/screenshots/occ_act_tags.png">
+<img src="https://github.com/The-Repo-Club/FlexiFlow/blob/screenshots/screenshots/occ_act_tags.png">
 (empty workspaces have their color greyed out)
 
 - NOTE: This is vanilla dwm bar (status2d patch for setting colors) not dwmblocks or polybar.
-  <img src="https://github.com/The-Repo-Club/repowm/blob/screenshots/screenshots/repowm.png">
+  <img src="https://github.com/The-Repo-Club/FlexiFlow/blob/screenshots/screenshots/flexiflow.png">
 
 # Requirements
 
 - imlib2
 - xsetroot package (status2d uses this to add colors on dwmbar)
-- Make sure to setup your terminal's theme accordingly do repowm's theme such as nord, onedark etc...
+- Make sure to setup your terminal's theme accordingly do FlexiFlow's theme such as nord, onedark etc...
 
 ## Other requirements
 
@@ -34,12 +34,12 @@
 **Recommended Method**
 
 ```sh
-$ git clone https://github.com/The-Repo-Club/repowm.git
-$ cd repowm
+$ git clone https://github.com/The-Repo-Club/FlexiFlow.git
+$ cd FlexiFlow
 $ sudo make install
 ```
 
-[Download latest release](https://github.com/The-Repo-Club/repowm/releases/)
+[Download latest release](https://github.com/The-Repo-Club/FlexiFlow/releases/)
 
 # Features
 
@@ -86,4 +86,4 @@ please refer to the documentation.
 
 # is this dwm?
 
-repowm is a fork of [DWM](https://dwm.suckless.org) and can be used as a drop in replacement, maintaining all dmenu behavior and making all extra features optional
+FlexiFlow is a fork of [DWM](https://dwm.suckless.org) and can be used as a drop in replacement, maintaining all dmenu behavior and making all extra features optional

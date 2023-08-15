@@ -2,14 +2,14 @@
 
 # path:       /usr/bin/repobar
 # author:     The-Repo-Club [wayne6324@gmail.com]
-# github:     https://github.com/The-Repo-Club/repowm
+# github:     https://github.com/The-Repo-Club/flexiflow
 # date:       2021-04-10 12:34:47.440579
 
 main() {
   while true; do
     top="$(bar_battery)$(bar_sep)$(bar_ram)$(bar_sep)$(bar_cpu)$(bar_sep)$(bar_keyboard)$(bar_sep)$(bar_updates)$(bar_sep)$(bar_network)$(bar_sep)$(bar_volume)$(bar_sep)$(bar_clock)"
 
-    repowm -s "$top"
+    flexiflow -s "$top"
     sleep 0.5s
   done
 }

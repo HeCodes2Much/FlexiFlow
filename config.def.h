@@ -30,7 +30,6 @@ static const int horizpadtabo                   = 15;
 static const int colorfultag                    = 1;        /* 0 means use SchemeSel for selected non vacant tag */
 
 static const char *fonts[] = {
-    //"Noto Sans Japanese:size=12"
     "Hack Nerd Font:size=10",
 };
 

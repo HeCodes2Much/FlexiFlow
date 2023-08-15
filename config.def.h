@@ -30,9 +30,8 @@ static const int horizpadtabo                   = 15;
 static const int colorfultag                    = 1;        /* 0 means use SchemeSel for selected non vacant tag */
 
 static const char *fonts[] = {
-    "Source Code Pro:size=10",
-    "Hack Nerd Font:size=12",
-    "Siji:size=12",
+    //"Noto Sans Japanese:size=12"
+    "Hack Nerd Font:size=10",
 };
 
 // theme
@@ -64,18 +63,19 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
     "autorandr", "--force", "--load", "flexiflow", NULL,
     "setxkbmap", "-option", "caps:escape", NULL,
-    "youtube_subs", "-d", NULL,
     "xroot", "-r", "xmenu_desktop", NULL,
     "ckb-next", "--background", NULL,
-    "touchpad-indicator", NULL,
+    //"touchpad-indicator", NULL, // Done not work do disabled this
+    "youtube_subs", "-d", NULL,
     "clipmenu-daemon", NULL,
+    "firewall-applet", NULL,
     "numlockx", "on", NULL,
     "blueman-applet", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,
-    "cbatticon", NULL,
-    "gufwicon", NULL,
+    "battray", NULL,
     "dunst", NULL,
+    // Auto launch apps after applets
     "alacritty", NULL,
     "firefox", NULL,
     "nemo", NULL,
@@ -84,7 +84,8 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static char *tags[] = {"  1: Terminal", " 2: Editor", " 3: Files", "  4: Graphics", " 5: Music", " 6: WebBrowser", " 7: Mail", " 8: Games", "󰭻 9: Chat" , " 10: Settings"};
+// static char *tags[] = {"  1: Terminal", " 2: Editor", " 3: Files", "  4: Graphics", " 5: Music", " 6: WebBrowser", " 7: Mail", " 8: Games", "󰭻 9: Chat" , " 10: Settings"};
+static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九" , "零"};
 
 static const int tagschemes[] = {
     SchemeTag1,

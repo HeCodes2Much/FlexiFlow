@@ -7,7 +7,7 @@ volume_alsa() {
   analog=$(pamixer --list-sinks | grep analog | awk '{ print $2 }' | sed 's/"//g')
   hdmi=$(pamixer --list-sinks | grep hdmi | awk '{ print $2 }' | sed 's/"//g')
 
-  if [ ! -z "$analog" ]; then
+  if [ -n "$analog" ]; then
     muted=$(pamixer --sink $analog --get-volume-human | grep muted)
     vol=$(pamixer --sink $analog --get-volume | sed 's/[^0-9]*//g')
 
@@ -26,7 +26,7 @@ volume_alsa() {
     fi
   fi
 
-  if [ ! -z "$hdmi" ]; then
+  if [ -n "$hdmi" ]; then
     muted=$(pamixer --sink $hdmi --get-volume-human | grep muted)
     vol=$(pamixer --sink $hdmi --get-volume | sed 's/[^0-9]*//g')
 
@@ -44,16 +44,16 @@ volume_alsa() {
       fi
     fi
   fi
-  if [ ! -z "$vol_a" ] && [ ! -z "$vol_h" ]; then
+  if [ -n "$vol_a" ] && [ -n "$vol_h" ]; then
     icon_a="  "
     icon_h="  "
 
     printf " %s %s %s %s \n" "^c$Foreground^^b$Cyan^$icon_a" "^c$Foreground^^b$Cyan_Bright^ $vol_a" "^c$Foreground^^b$Cyan^$icon_h" "^c$Foreground^^b$Cyan_Bright^ $vol_h"
-  elif [ ! -z "$vol_h" ]; then
+  elif [ -n "$vol_h" ]; then
     icon_h="  "
 
     printf " %s %s \n" "^c$Foreground^^b$Cyan^$icon_h" "^c$Foreground^^b$Cyan_Bright^ $vol_h"
-  elif [ ! -z "$vol_a" ]; then
+  elif [ -n "$vol_a" ]; then
     icon_a="  "
 
     printf " %s %s \n" "^c$Foreground^^b$Cyan^$icon_a" "^c$Foreground^^b$Cyan_Bright^ $vol_a"

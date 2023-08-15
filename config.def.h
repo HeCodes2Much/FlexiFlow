@@ -72,13 +72,8 @@ static const char *const autostart[] = {
     "blueman-applet", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,
-    "battray", NULL,
+    "cbatticon", NULL,
     "dunst", NULL,
-    // Auto launch apps after applets
-    "alacritty", NULL,
-    "firefox", NULL,
-    "nemo", NULL,
-    "code", NULL,
     NULL
 };
 
@@ -234,12 +229,12 @@ static const char *playernext[] = { "playerctl", "next", NULL};
 static const char *playerprevious[] = { "playerctl", "previous", NULL};
 static const char *playerpause[] = { "playerctl", "play-pause", NULL};
 
-static const char *upvol[] = {"amixer", "set", "Master", "5%+", NULL};
-static const char *downvol[] = {"amixer", "set", "Master", "5%-", NULL};
+static const char *upvol[] = {"amixer", "set", "Master", "5%+", "unmute", NULL};
+static const char *downvol[] = {"amixer", "set", "Master", "5%-", "unmute", NULL};
 static const char *mutevol[] = {"amixer", "set", "Master", "toggle", NULL};
 
-static const char *upbright[] = {"xbacklight", "+10", NULL};
-static const char *downbright[] = {"xbacklight", "-10", NULL};
+static const char *upbright[] = {"brightnessctl", "set", "5%+", NULL};
+static const char *downbright[] = {"brightnessctl", "set", "5%-", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *termscratchpadcmd[] = { "S", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };

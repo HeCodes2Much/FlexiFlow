@@ -37,8 +37,10 @@ dist: clean
 	rm -rf flexiflow-${VERSION}
 
 install: all
-	install -d ${DESTDIR}{${PREFIX}/bin,${SHAREPREFIX}/xsessions,${MANPREFIX}/man1}
-	install -m 755 -s flexiflow ${DESTDIR}${PREFIX}/bin/
+	mkdir -p ${DESTDIR}${PREFIX}/bin
+	mkdir -p ${SHAREPREFIX}/xsessions
+	mkdir -p ${MANPREFIX}/man1
+	install -m 755 flexiflow ${DESTDIR}${PREFIX}/bin/
 	install -m 755 flexiflow_bar ${DESTDIR}${PREFIX}/bin/
 	install -m 755 layoutmenu ${DESTDIR}${PREFIX}/bin/
 	install -m 644 flexiflow.1 ${DESTDIR}${MANPREFIX}/man1/

@@ -54,7 +54,7 @@ please refer to the documentation.
   - full multi monitor support
   - status2d color status
   - tag system
-  - repobar script
+  - flexiflow_bar script
   - indicators
   - shutdown menu (rofi)
   - system tray

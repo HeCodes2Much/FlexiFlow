@@ -3035,10 +3035,10 @@ void runAutostart(void)
     // system("command -v repo-exec || { sleep 4 && notify-send 'repo-exec missing, please install repo-exec!!!'; } &");
     if (usedbar)
     {
-        system("command -v repobar || { sleep 4 && notify-send 'repobar script is missing'; } &");
-        if (system("pgrep -f repobar"))
+        system("command -v flexiflow_bar || { sleep 4 && notify-send 'flexiflow_bar script is missing'; } &");
+        if (system("pgrep -f flexiflow_bar"))
         {
-          system("repobar &");
+          system("flexiflow_bar &");
         }
     }
     /* For Information Fetchers */

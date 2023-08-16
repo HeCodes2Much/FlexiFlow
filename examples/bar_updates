@@ -5,7 +5,7 @@ get_updates() {
   # load colors
   . $HOME/.config/flexiflow_bar/bar_themes/minimal-mistakes
 
-  updates=$(xbps-install --memory-sync --dry-run --update | grep -Fe update -e install | wc -l)
+  updates=$(yay -Pn)
   timestamp=$(date +%s)
   icon="  "
 

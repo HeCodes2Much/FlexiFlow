@@ -64,13 +64,12 @@ static const char *const autostart[] = {
     "setxkbmap", "-option", "caps:escape", NULL,
     "xroot", "-r", "xmenu_desktop", NULL,
     "ckb-next", "--background", NULL,
-    //"touchpad-indicator", NULL, // Done not work do disabled this
+    "touchpad-indicator", NULL, // Done not work do disabled this
     "youtube_subs", "-d", NULL,
     "clipmenu-daemon", NULL,
     "firewall-applet", NULL,
-    "numlockx", "on", NULL,
+    //"numlockx", "on", NULL,
     "blueman-applet", NULL,
-    "flexiflow_bar", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,
     "cbatticon", NULL,
@@ -223,7 +222,7 @@ static const char *filemanagercmd[] = { "nemo", NULL};
 static const char *hypervisorcmd[] = { "virt-manager", NULL};
 static const char *terminalcmd[] = { "alacritty", NULL};
 static const char *browsercmd[] = { "firefox", NULL};
-static const char *editorcmd[] = { "code-oss", NULL};
+static const char *editorcmd[] = { "code", NULL};
 
 /* genreal commands*/
 static const char *playernext[] = { "playerctl", "next", NULL};

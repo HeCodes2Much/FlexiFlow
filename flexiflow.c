@@ -3032,7 +3032,6 @@ void run(void)
 
 void runAutostart(void)
 {
-    // system("command -v repo-exec || { sleep 4 && notify-send 'repo-exec missing, please install repo-exec!!!'; } &");
     if (usedbar)
     {
         system("command -v flexiflow_bar || { sleep 4 && notify-send 'flexiflow_bar script is missing'; } &");

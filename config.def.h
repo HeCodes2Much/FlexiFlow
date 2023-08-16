@@ -70,6 +70,7 @@ static const char *const autostart[] = {
     "firewall-applet", NULL,
     "numlockx", "on", NULL,
     "blueman-applet", NULL,
+    "flexiflow_bar", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,
     "cbatticon", NULL,
@@ -222,7 +223,7 @@ static const char *filemanagercmd[] = { "nemo", NULL};
 static const char *hypervisorcmd[] = { "virt-manager", NULL};
 static const char *terminalcmd[] = { "alacritty", NULL};
 static const char *browsercmd[] = { "firefox", NULL};
-static const char *editorcmd[] = { "code", NULL};
+static const char *editorcmd[] = { "code-oss", NULL};
 
 /* genreal commands*/
 static const char *playernext[] = { "playerctl", "next", NULL};

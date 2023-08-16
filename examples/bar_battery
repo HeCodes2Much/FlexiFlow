@@ -16,7 +16,7 @@ get_charge() {
 
 is_charging() {
   status=$(cat "/sys/class/power_supply/$battery/status")
-  if [ ! $status = "Discharging" ]; then
+  if [[ ! $status = "Discharging" ]]; then
     return 0
   fi
   return 1

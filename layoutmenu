@@ -11,5 +11,8 @@ TTT Stack Layout	5
 HHH Grid Layout	7
 ### Narrow Grid Layout	8
 --- Grid Horz Layout	9
-><> NULL Layout	10
+::: Gapless Grid Layout	10
+|M| Centered Master Layout	11
+>M> Centered Floating Layout	12
+><> NULL Layout	13
 EOF

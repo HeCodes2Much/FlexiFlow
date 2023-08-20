@@ -3050,10 +3050,10 @@ void runAutostart(void)
 {
   if (usedbar)
   {
-    system("command -v flexiflow_bar || { sleep 4 && notify-send 'flexiflow_bar script is missing'; } &");
-    if (system("pgrep -f flexiflow_bar"))
-    {
-      system("flexiflow_bar &");
+    if (system("command -v flexiflow_bar > /dev/null 2>&1") == 0) {
+        system("flexiflow_bar &");
+    } else {
+        system("(sleep 4 && notify-send 'flexiflow_bar script is missing') &");
     }
   }
   /* For Information Fetchers */

@@ -1788,7 +1788,7 @@ void drawbar(Monitor *m)
   /* draw button */
   w = blw = TEXTW(buttonbar);
   drw_setscheme(drw, scheme[SchemeBtnClkMenu]);
-  x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
+  x = drw_text(drw, x, borderpx + vertpadbar / 2, w, bh_n - vertpadbar, lrpad / 2, buttonbar, 0);
 
   /* draw TAGS */
   for (i = 0; i < LENGTH(tags); i++)
@@ -1819,7 +1819,7 @@ void drawbar(Monitor *m)
   {
     w = TEXTW(launchers[i].name);
     drw_setscheme(drw, scheme[SchemeBtnClk]);
-    drw_text(drw, x, 0, w, bh, lrpad / 2, launchers[i].name, urg & 1 << i);
+    drw_text(drw, x, borderpx + vertpadbar / 2, w, bh_n - vertpadbar, lrpad / 2, launchers[i].name, urg & 1 << i);
     x += w;
   }
 
@@ -3356,7 +3356,7 @@ void setup(void)
   if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
     die("no fonts could be loaded.");
   lrpad = drw->fonts->h;
-  bh = drw->fonts->h + 2 + vertpadbar + borderpx * 2;
+  bh = user_bh ? user_bh : drw->fonts->h + 2 + vertpadbar + borderpx * 2;
   th = vertpadtab;
   // bh_n = vertpadtab;
   updategeom();

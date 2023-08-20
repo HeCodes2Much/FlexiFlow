@@ -115,7 +115,8 @@ static const Rule rules[] = {
     { "Yad",                        NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     { "Peek",                       NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     { "Snapper",                    NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
-    { "scratchpad_terminal",        NULL,         NULL,                 0,              0,                1,               1,           -1,       'S' },
+    { "scratchpad_terminal",        NULL,         NULL,                 0,              0,                1,               1,           -1,       'A' },
+    { "scratchpad_btop",            NULL,         NULL,                 0,              0,                1,               1,           -1,       'B' },
 
     //Workspace 1 Monitor 0
     { "Alacritty",                  NULL,         NULL,                 1 << 0,         1,                0,                0,           0,       0 },
@@ -152,7 +153,6 @@ static const Rule rules[] = {
     { "PkgBrowser",                 NULL,         NULL,                 1 << 9,         1,                0,                0,           0,       0 },
     { NULL,                         NULL,         "Event Tester",       1 << 9,         1,                0,                0,           0,       0 }, // xev
     { NULL,                         NULL,         "lazygit",            1 << 9,         1,                0,                0,           0,       0 }, // lazygit
-    { NULL,                         NULL,         "btop",               1 << 9,         1,                0,                0,           0,       0 }, // btop
 
 };
 
@@ -240,7 +240,8 @@ static const char *upbright[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *downbright[] = {"brightnessctl", "set", "5%-", NULL};
 
 /*First arg only serves to match against key in rules*/
-static const char *termscratchpadcmd[] = { "S", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };
+static const char *termscratchpadcmd[] = { "A", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };
+static const char *btopscratchpadcmd[] = { "B", "alacritty", "--title=scratchpad_btop", "--class=scratchpad_btop,scratchpad_btop", "-e", "btop", NULL };
 
 static const Launcher launchers[] = {
     /* command              name to display */
@@ -265,6 +266,7 @@ static Key keys[] = {
     // TheRepoClub Custom Keybinds.
     // Scratch Pads.
     { ControlMask,                       -1,            XK_Return,                           togglescratch,           {.v = termscratchpadcmd} },
+    { ShiftMask,                         -1,            XK_Return,                           togglescratch,           {.v = btopscratchpadcmd} },
 
     // Spawns.
     { MODKEY,                            -1,            XK_F1,                               spawn,                   {.v = clipmenucmd} },

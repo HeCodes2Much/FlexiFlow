@@ -3057,9 +3057,9 @@ void runAutostart(void)
     }
   }
   /* For Information Fetchers */
-  setenv("XDG_CURRENT_DESKTOP", "flexiflow", 1);
-  setenv("XDG_SESSION_DESKTOP", "flexiflow", 1);
-  setenv("DESKTOP_SESSION", "flexiflow", 1);
+  setenv("XDG_CURRENT_DESKTOP", "FlexiFlow", 1);
+  setenv("XDG_SESSION_DESKTOP", "FlexiFlow", 1);
+  setenv("DESKTOP_SESSION", "FlexiFlow", 1);
 
   int ret;
 

@@ -22,7 +22,7 @@ static const int usedbar                        = 1;        /* 0 means don't use
 static const int showtab                        = showtab_auto;
 static const int toptab                         = 0;        /* 0 means bottom tab */
 static const int topbar                         = 1;        /* 0 means bottom bar */
-static const int user_bh                        = 32;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh                        = 5;        /* 2 is the default spacing around the bar's font */
 static const char buttonbar[]                   = "󰍜";
 static const int horizpadbar                    = 5;
 static const int vertpadbar                     = 5;

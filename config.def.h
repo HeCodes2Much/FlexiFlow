@@ -74,6 +74,7 @@ static const char *const autostart[] = {
     "firewall-applet", NULL,
     "numlockx", "on", NULL,
     "blueman-applet", NULL,
+    "toggle_conky", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,
     "cbatticon", NULL,

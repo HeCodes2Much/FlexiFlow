@@ -3065,8 +3065,11 @@ void runAutostart(void)
 
   ret = system("~/.config/flexiflow/autostart.sh &");
 
-  if (ret)
-    ; // ignore, hide compilation warnings
+  if (ret) {
+    // Use the variable in a way that prevents compiler warnings
+    volatile int unused = ret;
+    (void)unused; // This line prevents 'unused variable' warnings
+  }
 }
 
 void scan(void)

@@ -372,6 +372,7 @@ static Monitor *systraytomon(Monitor *m);
 static void tabmode(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
+static void togglealttag(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void togglesystray();
 static void togglefloating(const Arg *arg);
@@ -491,6 +492,7 @@ struct Monitor
   int tab_widths[MAXTABS];
   int tab_btn_w[3];
   const Layout *lt[2];
+  unsigned int alttag;
   Pertag *pertag;
 };
 
@@ -1758,6 +1760,7 @@ void dragmfact(const Arg *arg)
 void drawbar(Monitor *m)
 {
   int x, y = borderpx, w, sw = 0, stw = 0;
+  int wdelta = 0;
   int bh_n = bh - borderpx * 2;
   int mw = m->ww - m->gappov * 2 - borderpx * 2;
   int boxs = drw->fonts->h / 9;
@@ -1797,8 +1800,9 @@ void drawbar(Monitor *m)
     if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
       continue;
     w = TEXTW(tags[i]);
+    wdelta = selmon->alttag ? abs(TEXTW(tags[i]) - TEXTW(tagsalt[i])) / 2 : 0;
     drw_setscheme(drw, scheme[occ & 1 << i ? (m->colorfultag ? tagschemes[i] : SchemeSel) : SchemeTag]);
-    drw_text(drw, x, y, w, bh_n, lrpad / 2, tags[i], urg & 1 << i);
+    drw_text(drw, x, 0, w, bh_n, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
     if (ulineall ||
         m->tagset[m->seltags] &
             1 << i) /* if there are conflicts, just move these lines directly
@@ -3595,6 +3599,12 @@ void tagmon(const Arg *arg)
   if (!selmon->sel || !mons->next)
     return;
   sendmon(selmon->sel, dirtomon(arg->i));
+}
+
+void togglealttag(const Arg *arg)
+{
+	selmon->alttag = !selmon->alttag;
+	drawbar(selmon);
 }
 
 void togglebar(const Arg *arg)

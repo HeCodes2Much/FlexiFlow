@@ -83,8 +83,8 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-// static char *tags[] = {"  1: Terminal", " 2: Editor", " 3: Files", "  4: Graphics", " 5: Music", " 6: WebBrowser", " 7: Mail", " 8: Games", "󰭻 9: Chat" , " 10: Settings"};
 static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九" , "零"};
+static const char *tagsalt[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
 
 static const int tagschemes[] = {
     SchemeTag1,
@@ -252,23 +252,24 @@ static const Launcher launchers[] = {
 
 /* commands */
 static Key keys[] = {
-    /* modifier                         chain           key                                   function           argument */
+    /* modifier                         chain           key                                 function                argument */
+    { MODKEY,                           -1,             XK_n,                               togglealttag,           {0} },
 
     // Keybinds for XFKeys
-    {0,                                -1,             XF86XK_MonBrightnessUp,               spawn,                   {.v = upbright}},
-    {0,                                -1,             XF86XK_MonBrightnessDown,             spawn,                   {.v = downbright}},
-    {0,                                -1,             XF86XK_AudioLowerVolume,              spawn,                   {.v = downvol}},
-    {0,                                -1,             XF86XK_AudioMute,                     spawn,                   {.v = mutevol}},
-    {0,                                -1,             XF86XK_AudioRaiseVolume,              spawn,                   {.v = upvol}},
-    {0,                                -1,             XF86XK_AudioPlay,                     spawn,                   {.v = playerpause}},
-    {0,                                -1,             XF86XK_AudioPause,                    spawn,                   {.v = playerpause}},
-    {0,                                -1,             XF86XK_AudioNext,                     spawn,                   {.v = playernext}},
-    {0,                                -1,             XF86XK_AudioPrev,                     spawn,                   {.v = playerprevious}},
+    {0,                                 -1,            XF86XK_MonBrightnessUp,              spawn,                  {.v = upbright}},
+    {0,                                 -1,            XF86XK_MonBrightnessDown,            spawn,                  {.v = downbright}},
+    {0,                                 -1,            XF86XK_AudioLowerVolume,             spawn,                  {.v = downvol}},
+    {0,                                 -1,            XF86XK_AudioMute,                    spawn,                  {.v = mutevol}},
+    {0,                                 -1,            XF86XK_AudioRaiseVolume,             spawn,                  {.v = upvol}},
+    {0,                                 -1,            XF86XK_AudioPlay,                    spawn,                  {.v = playerpause}},
+    {0,                                 -1,            XF86XK_AudioPause,                   spawn,                  {.v = playerpause}},
+    {0,                                 -1,            XF86XK_AudioNext,                    spawn,                  {.v = playernext}},
+    {0,                                 -1,            XF86XK_AudioPrev,                    spawn,                  {.v = playerprevious}},
 
     // TheRepoClub Custom Keybinds.
     // Scratch Pads.
-    {Mod1Mask,                         -1,            XK_Return,                           togglescratch,           {.v = termscratchpadcmd} },
-    {Mod1Mask,                         -1,            XK_b,                                togglescratch,           {.v = btopscratchpadcmd} },
+    {Mod1Mask,                          -1,            XK_Return,                           togglescratch,           {.v = termscratchpadcmd} },
+    {Mod1Mask,                          -1,            XK_b,                                togglescratch,           {.v = btopscratchpadcmd} },
 
     // Spawns.
     {MODKEY,                            -1,            XK_F1,                               spawn,                   {.v = clipmenucmd} },
@@ -302,7 +303,7 @@ static Key keys[] = {
     // toggle stuff
     {MODKEY,                           -1,             XK_b,                                 togglebar,              {0} },
     {MODKEY,                           -1,             XK_s,                                 togglesystray,          {0} },
-    {MODKEY|ControlMask,               -1,             XK_t,                                 togglegaps,             {0} },
+    {MODKEY,                           -1,             XK_g,                                 togglegaps,             {0} },
 
     {MODKEY|ShiftMask,                 -1,             XK_space,                             togglefloating,         {0} },
     {MODKEY,                           -1,             XK_f,                                 togglefullscr,          {0} },

@@ -71,7 +71,7 @@ static const char *const autostart[] = {
     "youtube_subs", "-d", NULL,
     "clipmenu-daemon", NULL,
     "firewall-applet", NULL,
-    //"numlockx", "on", NULL,
+    "numlockx", "on", NULL,
     "blueman-applet", NULL,
     "pasystray", NULL,
     "nm-applet", NULL,

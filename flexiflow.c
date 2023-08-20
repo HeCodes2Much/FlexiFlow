@@ -3051,7 +3051,7 @@ void runAutostart(void)
   if (usedbar)
   {
     if (system("command -v flexiflow_bar > /dev/null 2>&1") == 0) {
-        system("flexiflow_bar &");
+        system("sleep 4 && flexiflow_bar &");
     } else {
         system("(sleep 4 && notify-send 'flexiflow_bar script is missing') &");
     }

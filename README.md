@@ -16,11 +16,11 @@
 
 # Requirements
 
-- imlib2
-- xsetroot package (status2d uses this to add colors on dwmbar)
 - Make sure to setup your terminal's theme accordingly do FlexiFlow's theme such as nord, onedark etc...
 
 ## Other requirements
+
+These things can be changed in the config so are not hard requirements
 
 - picom
 - feh

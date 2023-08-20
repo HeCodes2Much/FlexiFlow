@@ -29,8 +29,7 @@
 
 # Installation
 
-**For Arch** it can be founded in [RepoClub Repository](https://arch.therepo.club/) \
-**For Gentoo** refer to the [XDream's Repository](https://github.com/XDream8/dreamsrepo) \
+**For Arch** it can be founded in [RepoClub Repository](https://arch.therepo.club/)
 **Recommended Method**
 
 ```sh

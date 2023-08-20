@@ -22,7 +22,7 @@ static const int usedbar                        = 1;        /* 0 means don't use
 static const int showtab                        = showtab_auto;
 static const int toptab                         = 0;        /* 0 means bottom tab */
 static const int topbar                         = 1;        /* 0 means bottom bar */
-static const char buttonbar[]                   = "󰹯";
+static const char buttonbar[]                   = "󰍜";
 static const int horizpadbar                    = 5;
 static const int vertpadbar                     = 11;
 static const int vertpadtab                     = 33;
@@ -39,25 +39,27 @@ static const char *fonts[] = {
 
 static const char *colors[][3]      = {
     /*                     fg       bg      border */
-    [SchemeNorm]       = { gray3,   black,  gray2 },
-    [SchemeSel]        = { gray4,   blue,   blue  },
-    [TabSel]           = { blue,    gray2,  black },
-    [TabNorm]          = { gray3,   black,  black },
-    [SchemeTag]        = { gray3,   black,  black },
-    [SchemeTag1]       = { blue,    black,  black },
-    [SchemeTag2]       = { red,     black,  black },
-    [SchemeTag3]       = { orange,  black,  black },
-    [SchemeTag4]       = { green,   black,  black },
-    [SchemeTag5]       = { pink,    black,  black },
-    [SchemeTag6]       = { blue,    black,  black },
-    [SchemeTag7]       = { red,     black,  black },
-    [SchemeTag8]       = { orange,  black,  black },
-    [SchemeTag9]       = { green,   black,  black },
-    [SchemeTag0]       = { pink,    black,  black },
-    [SchemeLayout]     = { gray1,   black,  black },
-    [SchemeBtnPrev]    = { green,   black,  black },
-    [SchemeBtnNext]    = { yellow,  black,  black },
-    [SchemeBtnClose]   = { red,     black,  black },
+    [SchemeNorm]            = { gray3,   black,  gray2 },
+    [SchemeSel]             = { gray4,   blue,   blue  },
+    [TabSel]                = { blue,    gray2,  black },
+    [TabNorm]               = { gray3,   black,  black },
+    [SchemeTag]             = { gray3,   black,  black },
+    [SchemeTag1]            = { blue,    black,  black },
+    [SchemeTag2]            = { red,     black,  black },
+    [SchemeTag3]            = { orange,  black,  black },
+    [SchemeTag4]            = { green,   black,  black },
+    [SchemeTag5]            = { pink,    black,  black },
+    [SchemeTag6]            = { blue,    black,  black },
+    [SchemeTag7]            = { red,     black,  black },
+    [SchemeTag8]            = { orange,  black,  black },
+    [SchemeTag9]            = { green,   black,  black },
+    [SchemeTag0]            = { pink,    black,  black },
+    [SchemeBtnClk]          = { black,   red,    black },
+    [SchemeLayout]          = { gray1,   black,  black },
+    [SchemeBtnPrev]         = { green,   black,  black },
+    [SchemeBtnNext]         = { yellow,  black,  black },
+    [SchemeBtnClose]        = { red,     black,  black },
+    [SchemeBtnClkMenu]      = { black,   blue,   black },
 };
 
 static const char *const autostart[] = {
@@ -242,7 +244,6 @@ static const char *termscratchpadcmd[] = { "S", "alacritty", "--title=scratchpad
 
 static const Launcher launchers[] = {
     /* command              name to display */
-    { startmenucmd,         "󰹯" },
     { powermenucmd,         "" },
 };
 

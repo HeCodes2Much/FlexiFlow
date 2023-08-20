@@ -96,6 +96,8 @@ enum
 {
   SchemeNorm,
   SchemeSel,
+  TabSel,
+  TabNorm,
   SchemeTag,
   SchemeTag1,
   SchemeTag2,
@@ -107,12 +109,12 @@ enum
   SchemeTag8,
   SchemeTag9,
   SchemeTag0,
+  SchemeBtnClk,
   SchemeLayout,
-  TabSel,
-  TabNorm,
   SchemeBtnPrev,
   SchemeBtnNext,
-  SchemeBtnClose
+  SchemeBtnClose,
+  SchemeBtnClkMenu
 }; /* color schemes */
 enum
 {
@@ -1785,7 +1787,7 @@ void drawbar(Monitor *m)
   x = borderpx;
   /* draw button */
   w = blw = TEXTW(buttonbar);
-  drw_setscheme(drw, scheme[SchemeLayout]);
+  drw_setscheme(drw, scheme[SchemeBtnClkMenu]);
   x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
 
   /* draw TAGS */
@@ -1816,6 +1818,7 @@ void drawbar(Monitor *m)
   for (i = 0; i < LENGTH(launchers); i++)
   {
     w = TEXTW(launchers[i].name);
+    drw_setscheme(drw, scheme[SchemeBtnClk]);
     drw_text(drw, x, 0, w, bh, lrpad / 2, launchers[i].name, urg & 1 << i);
     x += w;
   }

@@ -110,7 +110,7 @@ static const Rule rules[] = {
      *    WM_CLASS(STRING) = instance, class
      *    WM_NAME(STRING) = title
      */
-    /* class                        instance      title                 tags mask       switchtotag       iscentered       isfloating   monitor   scratch key */
+    /* class                        instance      title                tags mask       switchtotag       iscentered       isfloating   monitor   scratch key */
     //All workspaces
     {"Multimonitorlock-gui.py",    NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     {"Pavucontrol",                NULL,         NULL,                 0,              0,                1,               1,           -1,       'P' },

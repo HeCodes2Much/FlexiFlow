@@ -38,8 +38,8 @@ dist: clean
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	mkdir -p ${SHAREPREFIX}/xsessions
-	mkdir -p ${MANPREFIX}/man1
+	mkdir -p ${DESTDIR}${SHAREPREFIX}/xsessions
+	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	install -m 755 flexiflow ${DESTDIR}${PREFIX}/bin/
 	install -m 755 flexiflow_bar ${DESTDIR}${PREFIX}/bin/
 	install -m 755 layoutmenu ${DESTDIR}${PREFIX}/bin/

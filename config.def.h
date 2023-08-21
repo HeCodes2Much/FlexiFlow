@@ -113,12 +113,12 @@ static const Rule rules[] = {
     /* class                        instance      title                 tags mask       switchtotag       iscentered       isfloating   monitor   scratch key */
     //All workspaces
     {"Multimonitorlock-gui.py",    NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
-    {"Pavucontrol",                NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
+    {"Pavucontrol",                NULL,         NULL,                 0,              0,                1,               1,           -1,       'P' },
     {"floatmenu",                  NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     {"Yad",                        NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     {"Peek",                       NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     {"Snapper",                    NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
-    {"scratchpad_terminal",        NULL,         NULL,                 0,              0,                1,               1,           -1,       'A' },
+    {"scratchpad_terminal",        NULL,         NULL,                 0,              0,                1,               1,           -1,       'T' },
     {"scratchpad_btop",            NULL,         NULL,                 0,              0,                1,               1,           -1,       'B' },
 
     //Workspace 1 Monitor 0
@@ -243,8 +243,9 @@ static const char *upbright[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *downbright[] = {"brightnessctl", "set", "5%-", NULL};
 
 /*First arg only serves to match against key in rules*/
-static const char *termscratchpadcmd[] = {"A", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };
-static const char *btopscratchpadcmd[] = {"B", "alacritty", "--title=scratchpad_btop", "--class=scratchpad_btop,scratchpad_btop", "-e", "btop", NULL };
+static const char *spcmd_term[] = {"T", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };
+static const char *spcmd_btop[] = {"B", "alacritty", "--title=scratchpad_btop", "--class=scratchpad_btop,scratchpad_btop", "-e", "btop", NULL };
+static const char *spcmd_pavu[] = {"P", "pavucontrol", NULL };
 
 static const Launcher launchers[] = {
     /* command              name to display */
@@ -269,8 +270,9 @@ static Key keys[] = {
 
     // TheRepoClub Custom Keybinds.
     // Scratch Pads.
-    {Mod1Mask,                          -1,             XK_Return,                          togglescratch,          {.v = termscratchpadcmd} },
-    {Mod1Mask,                          -1,             XK_b,                               togglescratch,          {.v = btopscratchpadcmd} },
+    {Mod1Mask,                          -1,             XK_Return,                          togglescratch,          {.v = spcmd_term} },
+    {Mod1Mask,                          -1,             XK_b,                               togglescratch,          {.v = spcmd_btop} },
+    {Mod1Mask,                          -1,             XK_p,                               togglescratch,          {.v = spcmd_pavu} },
 
     // Spawns.
     {MODKEY,                            -1,             XK_F1,                              spawn,                  {.v = clipmenucmd} },
@@ -292,7 +294,6 @@ static Key keys[] = {
     {MODKEY|ControlMask,                XK_g,           XK_m,                               spawn,                  SHCMD("prime-run minecraft-launcher") },
     {MODKEY|ControlMask,                XK_g,           XK_r,                               spawn,                  SHCMD("prime-run runescape-launcher") },
     {MODKEY|ControlMask,                -1,             XK_p,                               spawn,                  SHCMD("pkgbrowser") },
-    {MODKEY|ControlMask,                -1,             XK_v,                               spawn,                  SHCMD("pavucontrol") },
     {MODKEY|ShiftMask,                  -1,             XK_z,                               spawn,                  SHCMD("multimonitorlock-gui") },
     {MODKEY|Mod1Mask,                   -1,             XK_p,                               spawn,                  SHCMD("piper") },
 

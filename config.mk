@@ -1,5 +1,5 @@
 # flexiflow version
-VERSION = 2023.08.20
+VERSION = 2023.08.21
 
 # Customize below to fit your system
 

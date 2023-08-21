@@ -22,7 +22,7 @@
 
 These things can be changed in the config so are not hard requirements
 
-- picom (compositor)
+- xcompmgr (compositor)
 - feh (changing background)
 - acpi
 - rofi (menu)

@@ -67,7 +67,7 @@ please refer to the documentation.
   - cfacts
   - dragmfact
   - dragcfact
-  - fibonacii
+  - fibonacci
   - gaplessgrid
   - horizgrid
   - movestack

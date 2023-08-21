@@ -22,10 +22,10 @@
 
 These things can be changed in the config so are not hard requirements
 
-- picom
-- feh
+- picom (compositor)
+- feh (changing background)
 - acpi
-- rofi
+- rofi (menu)
 
 # Installation
 
@@ -85,4 +85,4 @@ please refer to the documentation.
 
 # is this dwm?
 
-FlexiFlow is a fork of [DWM](https://dwm.suckless.org) and can be used as a drop in replacement, maintaining all dmenu behavior and making all extra features optional
+FlexiFlow is a fork of [DWM](https://dwm.suckless.org) and can be used as a drop in replacement.

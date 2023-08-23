@@ -1802,12 +1802,12 @@ void drawbar(Monitor *m)
     w = TEXTW(tags[i]);
     wdelta = selmon->alttag ? abs(TEXTW(tags[i]) - TEXTW(tagsalt[i])) / 2 : 0;
     drw_setscheme(drw, scheme[occ & 1 << i ? (m->colorfultag ? tagschemes[i] : SchemeSel) : SchemeTag]);
-    drw_text(drw, x, 0, w, bh_n, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
+    drw_text(drw, x + horizpadbar, 0, w, bh_n, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
     if (ulineall ||
         m->tagset[m->seltags] &
             1 << i) /* if there are conflicts, just move these lines directly
                        underneath both 'drw_setscheme' and 'drw_text' :) */
-      drw_rect(drw, x + ulinepad, bh_n - ulinestroke - ulinevoffset,
+      drw_rect(drw, x + horizpadbar + ulinepad, bh_n - ulinestroke - ulinevoffset,
                w - (ulinepad * 2), ulinestroke, 1, 0);
     /*if (occ & 1 << i)
       drw_rect(drw, x + boxs, y + boxs, boxw, boxw,
@@ -1815,6 +1815,7 @@ void drawbar(Monitor *m)
                urg & 1 << i); */
     x += w;
   }
+
   w = blw = TEXTW(m->ltsymbol);
   drw_setscheme(drw, scheme[SchemeLayout]);
   x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);

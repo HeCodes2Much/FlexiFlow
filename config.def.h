@@ -294,7 +294,6 @@ static Key keys[] = {
     {M|C,                               -1,             XK_x,                               spawn,                  SHCMD("hexchat") },
     {M|C,                               -1,             XK_i,                               spawn,                  SHCMD("inkscape") },
     {M|C,                               -1,             XK_k,                               spawn,                  SHCMD("krita") },
-    {M|C,                               -1,             XK_v,                               spawn,                  SHCMD("vlc") },
     {M|C,                               XK_g,           XK_s,                               spawn,                  SHCMD("prime-run steam") },
     {M|C,                               XK_g,           XK_m,                               spawn,                  SHCMD("prime-run minecraft-launcher") },
     {M|C,                               XK_g,           XK_r,                               spawn,                  SHCMD("prime-run runescape-launcher") },

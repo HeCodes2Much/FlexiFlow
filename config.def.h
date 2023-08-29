@@ -249,7 +249,7 @@ static const char *downbright[] = {"brightnessctl", "set", "5%-", NULL};
 
 /*First arg only serves to match against key in rules*/
 static const char *spcmd_term[] = {"T", "alacritty", "--title=scratchpad_terminal", "--class=scratchpad_terminal,scratchpad_terminal", NULL };
-static const char *spcmd_btop[] = {"B", "alacritty", "--title=scratchpad_btop", "--class=scratchpad_btop,scratchpad_btop", "-e", "btop", NULL };
+static const char *spcmd_btop[] = {"B", "st", "-n", "scratchpad_btop", "-c", "scratchpad_btop", "-t", "scratchpad_btop", "-e", "btop", NULL };
 static const char *spcmd_pavu[] = {"P", "pavucontrol", NULL };
 
 static const Launcher launchers[] = {

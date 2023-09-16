@@ -110,7 +110,7 @@ static const Rule rules[] = {
      *    WM_CLASS(STRING) = instance, class
      *    WM_NAME(STRING) = title
      */
-    /* class                        instance      title                tags mask       switchtotag       iscentered       isfloating   monitor   scratch key */
+    /* class                       instance      title                 tags mask       switchtotag       iscentered       isfloating   monitor   scratch key */
     //All workspaces
     {"Multimonitorlock-gui.py",    NULL,         NULL,                 0,              0,                1,               1,           -1,       0 },
     {"Pavucontrol",                NULL,         NULL,                 0,              0,                1,               1,           -1,       'P' },
@@ -141,6 +141,7 @@ static const Rule rules[] = {
 
     //Workspace 6 Monitor 1
     {"firefox",                    NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       0 },
+    {"Opera",                      NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       0 },
 
     //Workspace 7 Monitor 1
 
@@ -232,7 +233,7 @@ static const char *powermenucmd[] = {"powermenu_run", NULL};
 static const char *filemanagercmd[] = {"nemo", NULL};
 static const char *hypervisorcmd[] = {"virt-manager", NULL};
 static const char *terminalcmd[] = {"alacritty", NULL};
-static const char *browsercmd[] = {"firefox", NULL};
+static const char *browsercmd[] = {"opera", NULL};
 static const char *editorcmd[] = {"code", NULL};
 
 /* genreal commands*/

@@ -231,7 +231,7 @@ static const char *powermenucmd[] = {"powermenu_run", NULL};
 
 /* repomenu commands */
 static const char *filemanagercmd[] = {"nemo", NULL};
-static const char *hypervisorcmd[] = {"virt-manager", NULL};
+static const char *hypervisorcmd[] = {"gnome_boxes", NULL};
 static const char *terminalcmd[] = {"alacritty", NULL};
 static const char *browsercmd[] = {"opera", NULL};
 static const char *editorcmd[] = {"code", NULL};
@@ -285,8 +285,8 @@ static Key keys[] = {
     {M,                                 -1,             XK_F2,                              spawn,                  SHCMD("youtube_subs") },
     {M|S,                               -1,             XK_Return,                          spawn,                  {.v = filemanagercmd} },
     {M|C,                               -1,             XK_h,                               spawn,                  {.v = hypervisorcmd} },
-    {M|C,                               -1,             XK_f,                               spawn,                  {.v = browsercmd} },
-    {M|C,                               -1,             XK_c,                               spawn,                  {.v = editorcmd} },
+    {M|C,                               -1,             XK_b,                               spawn,                  {.v = browsercmd} },
+    {M|C,                               -1,             XK_e,                               spawn,                  {.v = editorcmd} },
     {M,                                 -1,             XK_p,                               spawn,                  {.v = passmenucmd} },
     {M,                                 -1,             XK_m,                               spawn,                  {.v = startmenucmd} },
     {M,                                 -1,             XK_Return,                          spawn,                  {.v = terminalcmd} },

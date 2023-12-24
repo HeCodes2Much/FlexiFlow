@@ -140,23 +140,23 @@ static const Rule rules[] = {
     //Workspace 5 Monitor 0
 
     //Workspace 6 Monitor 1
-    {"firefox",                    NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       0 },
-    {"Opera",                      NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       0 },
+    {"firefox",                    NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       1 },
+    {"Opera",                      NULL,         NULL,                 1 << 5,         1,                0,                0,           0,       1 },
 
     //Workspace 7 Monitor 1
 
     //Workspace 8 Monitor 1
-    {"Steam",                      NULL,         NULL,                 1 << 7,         1,                0,                0,           0,       0 },
-    {"RuneScape",                  NULL,         NULL,                 1 << 7,         1,                0,                0,           0,       0 },
+    {"Steam",                      NULL,         NULL,                 1 << 7,         1,                0,                0,           0,       1 },
+    {"RuneScape",                  NULL,         NULL,                 1 << 7,         1,                0,                0,           0,       1 },
 
     //Workspace 9 Monitor 1
-    {"discord",                    NULL,         NULL,                 1 << 8,         1,                0,                0,           0,       0 },
-    {"Hexchat",                    NULL,         NULL,                 1 << 8,         1,                0,                0,           0,       0 },
+    {"discord",                    NULL,         NULL,                 1 << 8,         1,                0,                0,           0,       1 },
+    {"Hexchat",                    NULL,         NULL,                 1 << 8,         1,                0,                0,           0,       1 },
 
     //Workspace 10 Monitor 1
-    {"PkgBrowser",                 NULL,         NULL,                 1 << 9,         1,                0,                0,           0,       0 },
-    {NULL,                         NULL,         "Event Tester",       1 << 9,         1,                0,                0,           0,       0 }, // xev
-    {NULL,                         NULL,         "lazygit",            1 << 9,         1,                0,                0,           0,       0 }, // lazygit
+    {"PkgBrowser",                 NULL,         NULL,                 1 << 9,         1,                0,                0,           0,       1 },
+    {NULL,                         NULL,         "Event Tester",       1 << 9,         1,                0,                0,           0,       1 }, // xev
+    {NULL,                         NULL,         "lazygit",            1 << 9,         1,                0,                0,           0,       1 }, // lazygit
 
 };
 
